@@ -5,14 +5,14 @@ class Interpreter
   def initialize
     @parser = Parser.new
   end
-  
+
   def eval(code)
     @parser.parse(code).eval(RootContext)
   end
 end
 
 class Nodes
-  # This method is the "interpreter" part of our language. All nodes know how to eval 
+  # This method is the "interpreter" part of our language. All nodes know how to eval
   # itself and returns the result of its evaluation by implementing the "eval" method.
   # The "context" variable is the environment in which the node is evaluated (local
   # variables, current class, etc.).
@@ -117,10 +117,10 @@ end
 
 class IfNode
   def eval(context)
-    ### Exercise
-    # Here you have access to:
-    #  condition: condition node that will determine if the body should be executed
-    #       body: node to be executed if the condition is true
-    #  else_body: node to be executed if the condition is false
+    if condition.eval(context) == Constants["true"]
+      body.eval(context)
+    elsif else_body
+      else_body.eval(context)
+    end
   end
 end
