@@ -26,7 +26,7 @@ class NilNode < LiteralNode
 end
 
 # Node of a method call or local variable access, can take any of these forms:
-# 
+#
 #   method # this form can also be a local variable
 #   method(argument1, argument2)
 #   receiver.method
@@ -57,4 +57,6 @@ class ClassNode < Struct.new(:name, :body); end
 
 # "if" control structure. Look at this node if you want to implement other control
 # structures like while, for, loop, etc.
-class IfNode  < Struct.new(:condition, :body, :else_body); end
+class IfNode < Struct.new(:condition, :body, :else_body); end
+
+class WhileNode < Struct.new(:condition, :body); end

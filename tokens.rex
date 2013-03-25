@@ -9,7 +9,7 @@ rule
   # Whitespace
   {BLANK}       # no action
   \#.*$         # discard comments
-  
+
   # Literals
   \d+                     { [:NUMBER, text.to_i] }
   \"[^"]*\"               { [:STRING, text[1..-2]] }
@@ -24,6 +24,7 @@ rule
   true                    { [:TRUE, text] }
   false                   { [:FALSE, text] }
   nil                     { [:NIL, text] }
+  while                   { [:WHILE, text] }
 
   # Identifiers
   [a-z]\w*                { [:IDENTIFIER, text] }
@@ -49,5 +50,5 @@ inner
     end
     tokens
   end
-  
+
 end
